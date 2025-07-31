@@ -1,3 +1,8 @@
-/*
- * This file is used to define the versions of the providers that are used in the module.
- */
+terraform {
+  required_providers {
+    azuredevops = {
+      source  = "microsoft/azuredevops"
+      version = ">= 1.11.0"
+    }
+  }
+}

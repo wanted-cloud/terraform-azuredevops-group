@@ -1,7 +1,7 @@
 <!-- BEGIN_TF_DOCS -->
-# wanted-cloud/terraform-module-template
+# wanted-cloud/terraform-azuredevops-group
 
-This repository represents a template for a Terraform building block module as we think it should be done, so it's for sure opinionated but in our eyes simple and powerful. Feel free to use or contribute.
+Terraform building block managing Azure DevOps groups and their memberships.
 
 ## Table of contents
 
@@ -15,11 +15,15 @@ This repository represents a template for a Terraform building block module as w
 
 ## Requirements
 
-No requirements.
+The following requirements are needed by this module:
+
+- <a name="requirement_azuredevops"></a> [azuredevops](#requirement\_azuredevops) (>= 1.11.0)
 
 ## Providers
 
-No providers.
+The following providers are used by this module:
+
+- <a name="provider_azuredevops"></a> [azuredevops](#provider\_azuredevops) (>= 1.11.0)
 
 ## Required Inputs
 
@@ -28,6 +32,38 @@ No required inputs.
 ## Optional Inputs
 
 The following input variables are optional (have default values):
+
+### <a name="input_description"></a> [description](#input\_description)
+
+Description: Description of the Azure DevOps group.
+
+Type: `string`
+
+Default: `""`
+
+### <a name="input_display_name"></a> [display\_name](#input\_display\_name)
+
+Description: Display name of the Azure DevOps group.
+
+Type: `string`
+
+Default: `""`
+
+### <a name="input_mail"></a> [mail](#input\_mail)
+
+Description: Mail of the Azure DevOps group. Cannot be set together with `display_name` or `origin_id`.
+
+Type: `string`
+
+Default: `""`
+
+### <a name="input_members"></a> [members](#input\_members)
+
+Description: List of members descriptors to be added to the Azure DevOps group.
+
+Type: `list(string)`
+
+Default: `[]`
 
 ### <a name="input_metadata"></a> [metadata](#input\_metadata)
 
@@ -55,13 +91,41 @@ object({
 
 Default: `{}`
 
+### <a name="input_origin_id"></a> [origin\_id](#input\_origin\_id)
+
+Description: Origin ID of the Azure DevOps group. Cannot be set together with `display_name` or `mail`.
+
+Type: `string`
+
+Default: `""`
+
+### <a name="input_project_name"></a> [project\_name](#input\_project\_name)
+
+Description: Name of the Azure DevOps project to which the group belongs.
+
+Type: `string`
+
+Default: `""`
+
 ## Outputs
 
-No outputs.
+The following outputs are exported:
+
+### <a name="output_group"></a> [group](#output\_group)
+
+Description: The Azure DevOps group created by this module.
+
+### <a name="output_members"></a> [members](#output\_members)
+
+Description: List of members added to the Azure DevOps group.
 
 ## Resources
 
-No resources.
+The following resources are used by this module:
+
+- [azuredevops_group.this](https://registry.terraform.io/providers/microsoft/azuredevops/latest/docs/resources/group) (resource)
+- [azuredevops_group_membership.this](https://registry.terraform.io/providers/microsoft/azuredevops/latest/docs/resources/group_membership) (resource)
+- [azuredevops_project.this](https://registry.terraform.io/providers/microsoft/azuredevops/latest/docs/data-sources/project) (data source)
 
 ## Usage
 
