@@ -1,5 +1,5 @@
 resource "azuredevops_group_membership" "this" {
-  group   = data.azuredevops_group.this.descriptor
+  group   = azuredevops_group.this.descriptor
   members = var.members
 
   timeouts {
