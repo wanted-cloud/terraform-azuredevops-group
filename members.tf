@@ -1,4 +1,5 @@
 resource "azuredevops_group_membership" "this" {
+  count   = length(var.members) > 0 ? 1 : 0
   group   = azuredevops_group.this.descriptor
   members = var.members
 

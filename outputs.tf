@@ -5,6 +5,6 @@ output "group" {
 
 output "members" {
   description = "List of members added to the Azure DevOps group."
-  value       = azuredevops_group_membership.this
+  value       = length(var.members) > 0 ? azuredevops_group_membership.this[0] : null
 
 }
